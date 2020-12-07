@@ -53,7 +53,10 @@ for sensor in sensors:
     thing = loadJson(sensor['Thing@iot.navigationLink'])
     descr = thing['description']
     print(descr)
-    csv = open(pfad + filename(descr) + '.csv','w+')
+    dateipfad = pfad + filename(descr) + '.csv';
+    if os.path.exists(pfad + filename(descr) + '.csv'):
+        continue
+    csv = open(dateipfad,'w+')
     csv.write('beschreib; time; result\n')
     obs = multiPage(sensor['Observations@iot.navigationLink'])
 
